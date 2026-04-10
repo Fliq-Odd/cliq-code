@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=67.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fliq-cli"
+version = "0.1.0"
+description = "Lightning-fast AI coding agent powered by a C++ engine and beautiful Python UI"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+keywords = ["ai", "cli", "coding-agent", "llm", "developer-tools"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Code Generators",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: C++",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "litellm>=1.0.0",
+    "rich>=13.0.0",
+    "InquirerPy>=0.3.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pybind11>=2.11",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+fliq = "src_python.main:main"
+
+[project.urls]
+Homepage = "https://github.com/your-username/fliq"
+Repository = "https://github.com/your-username/fliq"
+Issues = "https://github.com/your-username/fliq/issues"
+
+[tool.setuptools.packages.find]
+include = ["src_python*"]

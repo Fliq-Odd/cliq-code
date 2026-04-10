@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+venv/
+env/
+
+# C++ Build & CMake
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.a
+*.lib
+*.dll
+*.exe
+
+# Fliq / Claude Code local artifacts
+.fliq/
+.claude/
+.claude.json
+.clawd-todos.json
+.sandbox-home/
+.omc/
+.omx/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+
+.CLAUDE.md
+.PARIRTY.md
