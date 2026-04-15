@@ -1,14 +1,14 @@
-# CLIQ Code Installation & Usage Guide (COMPLETE)
+# FLIQ Installation & Usage Guide (COMPLETE)
 
 > This guide is written specifically for **Windows** users. If you're on Mac/Linux, check README.md.
 
 ---
 
-## What is CLIQ Code?
+## What is FLIQ?
 
-CLIQ Code is like your own **Claude Code / Cursor / Aider** but open source and works with ANY AI model.
+FLIQ is like your own **Claude Code / Cursor / Aider** but open source and works with ANY AI model.
 
-You type in English → CLIQ Code uses AI to → Read/Write files, Run commands, Fix bugs, Build projects.
+You type in English → FLIQ uses AI to → Read/Write files, Run commands, Fix bugs, Build projects.
 
 **It runs in your TERMINAL (PowerShell/CMD).**
 
@@ -17,7 +17,7 @@ You type in English → CLIQ Code uses AI to → Read/Write files, Run commands,
 ## FASTEST WAY TO RUN (3 Steps Only!)
 
 You do NOT need CMake. You do NOT need Visual Studio.
-You only need **Python** (which you already have!) and an **API key**.
+You only need **Python** and an **API key**.
 
 ### STEP 1: Install Python libraries
 
@@ -80,10 +80,10 @@ $env:ANTHROPIC_API_KEY = "sk-ant-paste-your-key-here"
 
 ---
 
-### STEP 3: Run CLIQ Code
+### STEP 3: Run FLIQ
 
 ```powershell
-cd C:\path\to\your\fliq-folder
+cd "C:\Users\91931\Desktop\fliq odd"
 python -m src_python.main
 ```
 
@@ -92,7 +92,7 @@ That's it! You should see:
 ```
  fliq v0.1.0 -- Lightning-fast AI coding agent
  Model: gemini/gemini-2.0-flash
- Workspace: C:\path\to\your\fliq-folder
+ Workspace: C:\Users\91931\Desktop\fliq odd
  Safety Catch: ACTIVE
  Type /help for commands, /quit to exit
 
@@ -108,9 +108,9 @@ Now type anything! Like:
 
 ---
 
-## How to Use CLIQ Code (Full Usage Guide)
+## How to Use FLIQ (Full Usage Guide)
 
-### Starting CLIQ Code
+### Starting FLIQ
 
 | Command | What It Does |
 |---------|-------------|
@@ -119,9 +119,9 @@ Now type anything! Like:
 | `python -m src_python.main --model openai/gpt-4o` | Use a specific AI model |
 | `python -m src_python.main --no-safety` | Skip command approval prompts |
 
-### Inside CLIQ Code -- Slash Commands
+### Inside FLIQ -- Slash Commands
 
-Once CLIQ Code is running, you can use these commands:
+Once FLIQ is running, you can use these commands:
 
 | Type This | What Happens |
 |-----------|-------------|
@@ -134,7 +134,7 @@ Once CLIQ Code is running, you can use these commands:
 | `/tokens` | Show how many tokens used (cost tracker) |
 | `/context` | Show detected project files |
 | `/clear` | Wipe conversation history |
-| `/quit` | Exit CLIQ Code |
+| `/quit` | Exit FLIQ |
 
 ### Example Conversations
 
@@ -157,7 +157,7 @@ Once CLIQ Code is running, you can use these commands:
 ```
 > List all Python files in this project
 ```
-CLIQ Code will suggest `find . -name "*.py"` and ask you to approve before running.
+FLIQ will suggest `find . -name "*.py"` and ask you to approve before running.
 
 **Edit files:**
 ```
@@ -168,14 +168,14 @@ CLIQ Code will suggest `find . -name "*.py"` and ask you to approve before runni
 
 ## Safety System Explained
 
-When CLIQ Code wants to run a command, it does NOT just run it. Here's what happens:
+When FLIQ wants to run a command, it does NOT just run it. Here's what happens:
 
 ```
 YOU: "Delete all .tmp files"
 
-CLIQ Code: I'll run this command:
+FLIQ: I'll run this command:
 
-  CLIQ Code wants to run:
+  FLIQ wants to run:
   +-----------------------------+
   |  $ rm *.tmp                 |
   |                             |
@@ -272,7 +272,7 @@ cmake --build build --config Release
 ## What Each File Does
 
 ```
-cliq-code/
+fliq odd/
 |-- src_python/             <-- THIS IS WHAT YOU RUN
 |   |-- main.py             <-- Entry point (start here!)
 |   |-- brain.py            <-- Talks to AI via LiteLLM
@@ -282,7 +282,7 @@ cliq-code/
 |   +-- __init__.py         <-- Package marker
 |
 |-- src_cpp/                <-- C++ ENGINE (optional, for speed)
-|   |-- include/cliq-code/       <-- 17 header files
+|   |-- include/fliq/       <-- 17 header files
 |   |-- engine/             <-- 17 implementation files
 |   |-- tests/              <-- Test suite
 |   +-- CMakeLists.txt      <-- Build file (needs CMake)
