@@ -3,7 +3,7 @@ requires = ["setuptools>=67.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fliq-cli"
+name = "cliq-code"
 version = "0.1.0"
 description = "Lightning-fast AI coding agent powered by a C++ engine and beautiful Python UI"
 readme = "README.md"
@@ -36,12 +36,12 @@ dev = [
 ]
 
 [project.scripts]
-fliq = "src_python.main:main"
+cliq-code = "src_python.main:main"
 
 [project.urls]
-Homepage = "https://github.com/your-username/fliq"
-Repository = "https://github.com/your-username/fliq"
-Issues = "https://github.com/your-username/fliq/issues"
+Homepage = "https://github.com/fliq-odd/cliq-code"
+Repository = "https://github.com/fliq-odd/cliq-code"
+Issues = "https://github.com/fliq-odd/cliq-code/issues"
 
 [tool.setuptools.packages.find]
 include = ["src_python*"]
