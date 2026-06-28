@@ -1,6 +1,6 @@
-# CLIQ Code -- AI-Powered CLI Agent
+# CLIQ Code (by fliq odd)
 
-> **A model-agnostic AI coding assistant** with a high-performance C++ engine and a Python-powered LLM brain. Use any LLM provider (Gemini, OpenAI, Anthropic, Llama) right from your terminal.
+> **A premium, model-agnostic AI coding assistant** with a high-performance C++ engine and a Python-powered LLM brain, developed by **fliq odd**. Use any LLM provider (Gemini, OpenAI, Anthropic, Llama, Ollama) right from your terminal.
 
 ---
 
@@ -78,86 +78,87 @@ You need an API key from at least one LLM provider:
 
 ---
 
-## Installation (Step-by-Step)
+## Installation Options
 
-### Step 1: Clone/Download the Project
+Choose the installation path that best fits your needs:
 
-If you already have the project folder, skip this. Otherwise:
+### Path A: Standalone Executable (Easiest — No Python Required)
+Ideal for end-users who want to run CLIQ Code immediately without installing Python, Git, or compilers.
+1. Go to the [Releases](https://github.com/fliq-odd/cliq-code/releases) page.
+2. Download the pre-compiled `cliq-code.exe` binary.
+3. Move the binary to a folder of your choice (e.g., `C:\Program Files\cliq-code`) and add that folder to your system's `PATH` variable to run it from any directory.
+
+---
+
+### Path B: Install via pip (Python Users)
+If you already have Python 3.10+ installed and want to run it as a global package without cloning the repository:
 ```bash
-cd ~/Desktop
-git clone https://github.com/fliq-odd/cliq-code.git
-cd cliq-code
+pip install git+https://github.com/fliq-odd/cliq-code.git
+```
+This installs the tool globally along with all core dependencies (`litellm`, `rich`, `InquirerPy`). You can run it anywhere on your machine by simply typing:
+```bash
+cliq-code
 ```
 
-### Step 2: Set Your API Key
+---
 
-**Windows (PowerShell):**
+### Path C: Developer Dev Setup (Clone & Compile C++ Engine)
+For developers who want to modify CLIQ Code or compile the high-performance C++ helper engine:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/fliq-odd/cliq-code.git
+   cd cliq-code
+   ```
+2. **Install in editable mode with development dependencies:**
+   ```bash
+   pip install -e .[dev]
+   ```
+3. **Build the C++ Engine (Optional):**
+   Ensure you have CMake and a C++20 compiler installed. Run:
+   ```bash
+   cmake -B build -S src_cpp
+   cmake --build build --config Release
+   ```
+   Verify the build by running the C++ test suite:
+   * **Windows:** `.\build\Release\engine_test.exe`
+   * **macOS/Linux:** `./build/engine_test`
+
+---
+
+## Configuration & API Keys
+
+Before launching CLIQ Code, you must set an API key for your chosen AI model provider. We recommend starting with Google Gemini as it offers a fast, free tier for testing.
+
+### 1. Set Your API Key
+
+#### Windows (PowerShell):
 ```powershell
-# For Gemini (recommended for free testing):
+# Temporarily for the current session:
 $env:GEMINI_API_KEY = "your-api-key-here"
 
-# OR for OpenAI:
-$env:OPENAI_API_KEY = "sk-your-key-here"
-
-# OR for Anthropic:
-$env:ANTHROPIC_API_KEY = "sk-ant-your-key-here"
-
-# To make it permanent (survives terminal restart):
-[System.Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "your-key", "User")
+# Permanently (survives system restarts — run once):
+[System.Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "your-api-key-here", "User")
 ```
 
-**macOS/Linux (bash/zsh):**
+#### macOS/Linux (bash/zsh):
 ```bash
-# Add to ~/.bashrc or ~/.zshrc:
+# Append to ~/.bashrc or ~/.zshrc:
 export GEMINI_API_KEY="your-api-key-here"
-# OR
-export OPENAI_API_KEY="sk-your-key-here"
-# Then reload:
+# Reload terminal configuration:
 source ~/.bashrc
 ```
 
-### Step 3: Install Python Dependencies
+*Note: You can swap Gemini for OpenAI (`OPENAI_API_KEY`) or Anthropic (`ANTHROPIC_API_KEY`) using the same syntax.*
 
+### 2. Start CLIQ Code
+Once your path is set up and key is configured, start the interactive REPL:
 ```bash
-pip install rich InquirerPy litellm
-```
+# If installed via Path A / Path B:
+cliq-code
 
-What each package does:
-- **`litellm`** -- Routes your requests to any LLM provider (Gemini, OpenAI, Anthropic, etc.)
-- **`rich`** -- Beautiful terminal output (markdown, syntax highlighting, spinners)
-- **`InquirerPy`** -- Interactive prompts (for the safety confirmation dialogs)
-
-### Step 4: Run CLIQ Code
-
-```bash
-cd fliq
+# If running directly from Path C source code:
 python -m src_python.main
-```
-
-### Step 5 (Optional): Build the C++ Engine
-
-Only if you have CMake and a C++ compiler installed:
-
-**Windows (with Visual Studio):**
-```powershell
-cmake -B build -S src_cpp
-cmake --build build --config Release
-```
-
-**macOS/Linux:**
-```bash
-cmake -B build -S src_cpp
-cmake --build build
-```
-
-If the build succeeds, you'll see `engine_test` (or `engine_test.exe` on Windows) in the `build/` folder. Run it to verify:
-
-```bash
-# Windows:
-.\build\Release\engine_test.exe
-
-# macOS/Linux:
-./build/engine_test
 ```
 
 ---
@@ -166,7 +167,7 @@ If the build succeeds, you'll see `engine_test` (or `engine_test.exe` on Windows
 
 ### Interactive Mode (REPL)
 
-When you run `python -m src_python.main`, you get an interactive session:
+When you run `cliq-code`, you get an interactive session:
 
 ```
 fliq v0.1.0 -- Lightning-fast AI coding agent

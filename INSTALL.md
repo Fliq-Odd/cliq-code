@@ -1,33 +1,42 @@
-# FLIQ Installation & Usage Guide (COMPLETE)
+# CLIQ Code Installation & Usage Guide (by fliq odd)
 
 > This guide is written specifically for **Windows** users. If you're on Mac/Linux, check README.md.
 
 ---
 
-## What is FLIQ?
+## What is CLIQ Code?
 
-FLIQ is like your own **Claude Code / Cursor / Aider** but open source and works with ANY AI model.
+CLIQ Code (developed by **fliq odd**) is like your own **Claude Code / Cursor / Aider** but open source and works with ANY AI model.
 
-You type in English → FLIQ uses AI to → Read/Write files, Run commands, Fix bugs, Build projects.
+You type in English → CLIQ Code uses AI to → Read/Write files, Run commands, Fix bugs, Build projects.
 
 **It runs in your TERMINAL (PowerShell/CMD).**
 
 ---
 
-## FASTEST WAY TO RUN (3 Steps Only!)
+## HOW TO INSTALL & RUN (Pick One Method)
 
-You do NOT need CMake. You do NOT need Visual Studio.
-You only need **Python** and an **API key**.
+---
 
-### STEP 1: Install Python libraries
+### METHOD 1: Standalone Executable (Absolute Fastest — No Python Required)
 
-Open PowerShell and run:
+You do NOT need Python, CMake, git, or compiler setups.
+1. Download the latest `cliq-code.exe` from the [Releases](https://github.com/fliq-odd/cliq-code/releases) section.
+2. Put the `cliq-code.exe` file in a directory of your choice (e.g. `C:\Program Files\cliq-code`).
+3. Add that directory to your Windows system Environment Variable `PATH` so you can launch it from any terminal.
 
-```powershell
-pip install rich InquirerPy litellm
-```
+---
 
-**What these do:**
+### METHOD 2: Python package (Requires Python 3.10+)
+
+If you want to run CLIQ Code as a standard Python tool:
+
+1. Open PowerShell and install directly from GitHub:
+   ```powershell
+   pip install git+https://github.com/fliq-odd/cliq-code.git
+   ```
+
+**What this installs:**
 | Package | Purpose |
 |---------|---------|
 | `litellm` | Talks to any AI (Gemini, GPT, Claude, Llama) |
@@ -36,55 +45,52 @@ pip install rich InquirerPy litellm
 
 ---
 
-### STEP 2: Set your AI API key
+## Set your AI API key
 
 You need a key from AT LEAST ONE provider. **Gemini is FREE** -- easiest option.
 
-#### Option A: Google Gemini (FREE & recommended)
+### Option A: Google Gemini (FREE & recommended)
 
 1. Go to: https://aistudio.google.com/apikey
 2. Click "Create API Key"
 3. Copy the key
 4. In PowerShell, run:
+   ```powershell
+   $env:GEMINI_API_KEY = "paste-your-key-here"
+   ```
 
-```powershell
-$env:GEMINI_API_KEY = "paste-your-key-here"
-```
-
-#### Option B: OpenAI (GPT-4)
+### Option B: OpenAI (GPT-4)
 
 1. Go to: https://platform.openai.com/api-keys
 2. Create a key
 3. Run:
+   ```powershell
+   $env:OPENAI_API_KEY = "sk-paste-your-key-here"
+   ```
 
-```powershell
-$env:OPENAI_API_KEY = "sk-paste-your-key-here"
-```
-
-#### Option C: Anthropic (Claude)
+### Option C: Anthropic (Claude)
 
 1. Go to: https://console.anthropic.com/settings/keys
 2. Create a key
 3. Run:
-
-```powershell
-$env:ANTHROPIC_API_KEY = "sk-ant-paste-your-key-here"
-```
+   ```powershell
+   $env:ANTHROPIC_API_KEY = "sk-ant-paste-your-key-here"
+   ```
 
 > **IMPORTANT:** The `$env:` method only lasts for your current terminal session.
-> To make it permanent:
+> To make it permanent (so you don't have to type it every time):
 > ```powershell
-> [System.Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "your-key", "User")
+> [System.Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "your-key-here", "User")
 > ```
 > Then restart your terminal.
 
 ---
 
-### STEP 3: Run FLIQ
+## Run CLIQ Code
 
+Simply type in your terminal:
 ```powershell
-cd "C:\Users\91931\Desktop\fliq odd"
-python -m src_python.main
+cliq-code
 ```
 
 That's it! You should see:
@@ -108,20 +114,20 @@ Now type anything! Like:
 
 ---
 
-## How to Use FLIQ (Full Usage Guide)
+## How to Use CLIQ Code (Full Usage Guide)
 
-### Starting FLIQ
+### Starting CLIQ Code
 
 | Command | What It Does |
 |---------|-------------|
-| `python -m src_python.main` | Start interactive mode (REPL) |
-| `python -m src_python.main "your question"` | One-shot: ask a question and exit |
-| `python -m src_python.main --model openai/gpt-4o` | Use a specific AI model |
-| `python -m src_python.main --no-safety` | Skip command approval prompts |
+| `cliq-code` | Start interactive mode (REPL) |
+| `cliq-code "your question"` | One-shot: ask a question and exit |
+| `cliq-code --model openai/gpt-4o` | Use a specific AI model |
+| `cliq-code --no-safety` | Skip command approval prompts |
 
-### Inside FLIQ -- Slash Commands
+### Inside CLIQ Code -- Slash Commands
 
-Once FLIQ is running, you can use these commands:
+Once CLIQ Code is running, you can use these commands:
 
 | Type This | What Happens |
 |-----------|-------------|
@@ -215,7 +221,7 @@ You press **Y** to allow, **N** to deny. You are ALWAYS in control.
 **To use Ollama (100% local, no internet, no API key):**
 1. Install from https://ollama.ai
 2. `ollama pull llama3.1`
-3. `python -m src_python.main --model ollama/llama3.1`
+3. `cliq-code --model ollama/llama3.1`
 
 ---
 
@@ -238,7 +244,7 @@ $env:GEMINI_API_KEY = "your-key"
 - Check the model name is valid (e.g., `gemini/gemini-2.0-flash` not just `gemini`)
 
 ### "cmake is not recognized"
-**You DON'T need cmake for the Python version!** The C++ engine is an optional performance boost. Just run `python -m src_python.main` directly.
+**You DON'T need cmake for the Python version!** The C++ engine is an optional performance boost. Just run `cliq-code` directly.
 
 ### "How do I make the API key permanent?"
 ```powershell
