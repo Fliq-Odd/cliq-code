@@ -85,7 +85,7 @@ Choose the installation path that best fits your needs:
 ### Path A: Standalone Executable (Easiest — No Python Required)
 Ideal for end-users who want to run CLIQ Code immediately without installing Python, Git, or compilers.
 
-> **Note:** The standalone Windows executable is signed by the [SignPath Foundation](https://signpath.org/).
+> **Note on Windows Security:** Since this is a new open-source project, Windows SmartScreen might flag the `.exe` as an "Unrecognized App". This is normal for unsigned indie apps. To run it, simply click **More info** -> **Run anyway**.
 
 1. Go to the [Releases](https://github.com/fliq-odd/cliq-code/releases) page.
 2. Download the pre-compiled `cliq-code.exe` binary.
