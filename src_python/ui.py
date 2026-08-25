@@ -67,7 +67,7 @@ class TerminalUI:
         print("               |_|                        ")
         print()
 
-    def print_banner(self, model: str, version: str = "0.1.0") -> None:
+    def print_banner(self, model: str, version: str = "0.1.1") -> None:
         """Print the startup banner."""
         if self.console:
             self._print_logo()

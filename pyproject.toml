@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cliq-code"
-version = "0.1.0"
+version = "0.1.1"
 description = "Lightning-fast AI coding agent powered by a C++ engine and beautiful Python UI"
 readme = "README.md"
 license = {text = "MIT"}
